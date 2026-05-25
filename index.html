@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>25th Anniversary Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:black;
+    font-family:'Poppins',sans-serif;
+}
+
+/* MAIN VIDEO */
+
+.video{
+    width:100%;
+    height:100%;
+    position:relative;
+    overflow:hidden;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.75)),
+    url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1920&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+/* OVERLAY */
+
+.video::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top left,
+    rgba(255,215,0,0.12), transparent 35%),
+
+    radial-gradient(circle at bottom right,
+    rgba(255,215,0,0.08), transparent 35%);
+}
+
+/* TAP SCREEN */
+
+.tapScreen{
+    position:absolute;
+    inset:0;
+    z-index:9999;
+    background:black;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.tapCircle{
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    border:4px solid gold;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+    font-size:24px;
+    letter-spacing:2px;
+
+    box-shadow:
+    0 0 20px gold,
+    0 0 50px gold;
+
+    animation:tapGlow 1.5s infinite;
+    cursor:pointer;
+}
+
+@keyframes tapGlow{
+
+    0%{
+        transform:scale(1);
+        box-shadow:0 0 10px gold;
+    }
+
+    50%{
+        transform:scale(1.08);
+        box-shadow:
+        0 0 30px gold,
+        0 0 60px gold;
+    }
+
+    100%{
+        transform:scale(1);
+        box-shadow:0 0 10px gold;
+    }
+}
+
+/* CURTAIN */
+
+.curtain-left,
+.curtain-right{
+    position:absolute;
+    top:0;
+    width:50%;
+    height:100%;
+    background:#0d0d0d;
+    z-index:1000;
+}
+
+.curtain-left{
+    left:0;
+}
+
+.curtain-right{
+    right:0;
+}
+
+.open .curtain-left{
+    animation:openLeft 3s forwards;
+}
+
+.open .curtain-right{
+    animation:openRight 3s forwards;
+}
+
+@keyframes openLeft{
+    to{
+        transform:translateX(-100%);
+    }
+}
+
+@keyframes openRight{
+    to{
+        transform:translateX(100%);
+    }
+}
+
+/* LIGHT PARTICLES */
+
+.light{
+    position:absolute;
+    width:0.5vw;
+    height:0.5vw;
+    min-width:4px;
+    min-height:4px;
+
+    border-radius:50%;
+    background:gold;
+
+    box-shadow:0 0 12px gold;
+
+    animation:float linear infinite;
+}
+
+@keyframes float{
+
+    from{
+        transform:translateY(100vh) scale(0);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-120vh) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* SLIDES */
+
+.slide{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    text-align:center;
+
+    padding:5vw;
+
+    opacity:0;
+    transform:scale(1.08);
+
+    animation:slideShow 32s infinite;
+
+    color:white;
+}
+
+/* SLIDE DELAYS */
+
+.slide1{
+    animation-delay:0s;
+}
+
+.slide2{
+    animation-delay:8s;
+}
+
+.slide3{
+    animation-delay:16s;
+}
+
+.slide4{
+    animation-delay:24s;
+}
+
+/* SLIDE ANIMATION */
+
+@keyframes slideShow{
+
+    0%{
+        opacity:0;
+        transform:scale(1.08);
+    }
+
+    8%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    24%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    32%{
+        opacity:0;
+        transform:scale(0.94);
+    }
+
+    100%{
+        opacity:0;
+    }
+}
+
+/* TEXT */
+
+.topText{
+    color:#f4d36b;
+    font-size:clamp(14px,2vw,24px);
+
+    letter-spacing:4px;
+    text-transform:uppercase;
+
+    margin-bottom:20px;
+}
+
+.heading{
+    font-family:'Cinzel',serif;
+
+    font-size:clamp(40px,8vw,82px);
+
+    line-height:1.2;
+
+    text-shadow:
+    0 0 15px rgba(255,215,0,0.6);
+
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+
+    from{
+        text-shadow:0 0 10px gold;
+    }
+
+    to{
+        text-shadow:
+        0 0 30px gold,
+        0 0 60px rgba(255,215,0,0.6);
+    }
+}
+
+.names{
+    font-family:'Cinzel',serif;
+
+    font-size:clamp(34px,7vw,70px);
+
+    line-height:1.5;
+
+    color:#ffd700;
+
+    text-shadow:
+    0 0 20px rgba(255,215,0,0.7);
+}
+
+.text{
+    margin-top:25px;
+
+    font-size:clamp(16px,2.5vw,30px);
+
+    line-height:1.8;
+
+    max-width:1000px;
+
+    font-weight:300;
+}
+
+.details{
+    margin-top:35px;
+
+    font-size:clamp(18px,3vw,34px);
+
+    line-height:2;
+}
+
+.gold{
+    color:#ffd700;
+    font-weight:600;
+}
+
+.finalText{
+    font-size:clamp(34px,5vw,52px);
+
+    color:#ffd700;
+
+    font-family:'Cinzel',serif;
+
+    margin-bottom:25px;
+}
+
+.invite{
+    font-size:clamp(16px,2.5vw,30px);
+
+    line-height:1.9;
+
+    max-width:1000px;
+}
+
+/* FADEOUT */
+
+.fadeout{
+    position:absolute;
+    inset:0;
+
+    background:black;
+
+    opacity:0;
+
+    animation:endFade 32s infinite;
+}
+
+@keyframes endFade{
+
+    0%,85%{
+        opacity:0;
+    }
+
+    100%{
+        opacity:1;
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .slide{
+        padding:25px;
+    }
+
+    .details{
+        line-height:1.7;
+    }
+
+    .invite{
+        line-height:1.7;
+    }
+
+    .tapCircle{
+        width:130px;
+        height:130px;
+        font-size:18px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TAP SCREEN -->
+
+<div class="tapScreen" id="tapScreen">
+
+    <div class="tapCircle">
+        Tap Here
+    </div>
+
+</div>
+
+<div class="video" id="videoContainer">
+
+<!-- CURTAIN -->
+
+<div class="curtain-left"></div>
+<div class="curtain-right"></div>
+
+<!-- SLIDE 1 -->
+
+<div class="slide slide1">
+
+<div class="topText">
+With the Blessings of Allah
+</div>
+
+<div class="heading">
+Silver Jubilee<br>
+Anniversary
+</div>
+
+<div class="text">
+We cordially invite you and your family
+to celebrate a beautiful journey of love,
+togetherness and cherished memories.
+</div>
+
+</div>
+
+<!-- SLIDE 2 -->
+
+<div class="slide slide2">
+
+<div class="topText">
+Celebrating 25 Beautiful Years
+</div>
+
+<div class="names">
+Moin Ahmad<br>
+&amp;<br>
+Sabiya Khan
+</div>
+
+<div class="text">
+A wonderful journey filled with
+love, happiness, trust and endless blessings.
+</div>
+
+</div>
+
+<!-- SLIDE 3 -->
+
+<div class="slide slide3">
+
+<div class="heading" style="font-size:clamp(32px,6vw,58px);">
+Event Details
+</div>
+
+<div class="details">
+
+<span class="gold">Date :</span>
+8th June
+<br>
+
+<span class="gold">Time :</span>
+7:00 PM
+<br>
+
+<span class="gold">Venue :</span>
+<br>
+
+M.M. Lawn<br>
+Mahavir Mandir Opposite to HDB Bank
+
+</div>
+
+</div>
+
+<!-- SLIDE 4 -->
+
+<div class="slide slide4">
+
+<div class="finalText">
+We Await Your Presence
+</div>
+
+<div class="invite">
+
+Your gracious presence will make
+this celebration more joyful and memorable.
+<br><br>
+
+Join us for an evening filled with
+love, blessings, celebration and dinner.
+<br><br>
+
+In Sha Allah
+
+</div>
+
+</div>
+
+<!-- CLOSING -->
+
+<div class="fadeout"></div>
+
+</div>
+
+<!-- MUSIC -->
+
+<audio id="bgMusic" loop>
+
+<source src="song.mp3" type="audio/mp3">
+
+</audio>
+
+<script>
+
+/* PARTICLES */
+
+for(let i=0;i<80;i++){
+
+    const light=document.createElement("div");
+
+    light.classList.add("light");
+
+    light.style.left=Math.random()*100+"vw";
+
+    light.style.animationDuration=
+    (5+Math.random()*8)+"s";
+
+    light.style.animationDelay=
+    Math.random()*8+"s";
+
+    light.style.opacity=Math.random();
+
+    document.body.appendChild(light);
+}
+
+/* START EXPERIENCE */
+
+const tapScreen=document.getElementById("tapScreen");
+
+const music=document.getElementById("bgMusic");
+
+const video=document.getElementById("videoContainer");
+
+tapScreen.addEventListener("click",()=>{
+
+    music.volume=0.7;
+
+    music.play();
+
+    video.classList.add("open");
+
+    tapScreen.style.display="none";
+
+});
+
+</script>
+
+</body>
+</html>
